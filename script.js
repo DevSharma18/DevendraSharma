@@ -1,5 +1,5 @@
 // Typing Effect
-const titles = ['Cybersecurity Specialist', 'Digital Forensics Expert', 'Penetration Tester', 'Security Analyst'];
+const titles = ['Cybersecurity Specialist', 'Digital Forensics Expert', 'Security Analyst'];
 let titleIndex = 0, charIndex = 0, isDeleting = false;
 const typedText = document.getElementById('typed-text');
 
