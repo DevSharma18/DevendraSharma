@@ -1,5 +1,11 @@
-// Typing Effect
-const titles = ['Cybersecurity Specialist', 'Digital Forensics Expert', 'Security Analyst'];
+// Typing Effect — Security & ML titles
+const titles = [
+    'Security Engineer',
+    'ML Security Researcher',
+    'Penetration Tester',
+    'Digital Forensics Analyst',
+    'Threat Detection Engineer'
+];
 let titleIndex = 0, charIndex = 0, isDeleting = false;
 const typedText = document.getElementById('typed-text');
 
@@ -13,10 +19,10 @@ function type() {
         charIndex++;
     }
 
-    let timeout = isDeleting ? 50 : 100;
+    let timeout = isDeleting ? 40 : 80;
 
     if (!isDeleting && charIndex === current.length) {
-        timeout = 2000;
+        timeout = 2500;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
@@ -67,11 +73,11 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Navbar background on scroll
+// Navbar shadow on scroll
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.1)';
+        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
     } else {
         navbar.style.boxShadow = 'none';
     }
@@ -100,7 +106,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for animations
+// Intersection Observer for scroll-reveal animations
 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 
 const observer = new IntersectionObserver((entries) => {
@@ -112,9 +118,23 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.about-card, .skill-category, .timeline-item, .project-card, .achievement, .cert').forEach(el => {
+document.querySelectorAll('.about-card, .skill-category, .timeline-item, .project-card, .achievement, .cert, .focus-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
+});
+
+// Terminal typing animation
+document.addEventListener('DOMContentLoaded', () => {
+    const terminalLines = document.querySelectorAll('.terminal-line');
+    terminalLines.forEach((line, index) => {
+        line.style.opacity = '0';
+        line.style.transform = 'translateX(-10px)';
+        line.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        setTimeout(() => {
+            line.style.opacity = '1';
+            line.style.transform = 'translateX(0)';
+        }, 300 + (index * 200));
+    });
 });
